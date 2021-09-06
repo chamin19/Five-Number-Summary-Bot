@@ -6,11 +6,11 @@ from os import getenv
 import bot_functions
 import random
 
-load_dotenv()
+load_dotenv(".env")
 
 client = commands.Bot(command_prefix = "!")
-
-CHANNEL_ID = 884089060778471435
+server_token = getenv('TOKEN')
+channel_token = getenv('CHANNELID')
 
 temp = None
 
@@ -29,9 +29,9 @@ class Data:
 
 @client.event
 async def on_ready():
-    channel = client.get_channel(CHANNEL_ID)
+    channel = client.get_channel(int(channel_token))
     greetings = ["Hi, there!", "Howdy!", "Hello!", "Hey, there!"]
-    await channel.send(f"{random.choice(greetings)} Standard Deviation Bot is now online.")
+    await channel.send(f"{random.choice(greetings)} Five-Number Summary Bot is now online.")
 
     embed = discord.Embed(title="Commands", inline=False)
     embed.add_field(name="!A", value="Mean, Median, Mode", inline=False)
@@ -87,6 +87,6 @@ async def F(ctx):
     await ctx.reply(str(temp.data_list) 
     + "\nMinimum within lower & upper fence: " + str(bot_functions.minimum_fence(temp))
     + "\nMaximum within lower & upper fence: " + str(bot_functions.maximum_fence(temp)))
- 
 
-client.run(getenv('TOKEN'))
+
+client.run(server_token)

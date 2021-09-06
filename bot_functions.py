@@ -39,9 +39,9 @@ def standard_deviation(temp):
 
 #Box model
 def quartile_calc(temp, position):
-    if isinstance(position,int):
-        return temp.data_list[position-1]
-    elif isinstance(position,float):
+    if position%1 == 0:
+        return temp.data_list[int(position)-1]
+    else:
         first_num = temp.data_list[math.floor(position)-1]
         second_num = temp.data_list[math.floor(position)]
         return first_num + position%1 * (second_num - first_num)
