@@ -11,7 +11,7 @@ def median(temp):
         return (temp.data_list[temp.num_of_elements//2-1] + temp.data_list[temp.num_of_elements//2])/2
 
 def mode(temp): 
-    if len(temp.data_list) == 1:
+    if temp.num_of_elements == 1:
         return temp.data_list
     occurences = {}
     for num in temp.data_list:
