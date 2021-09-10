@@ -33,6 +33,7 @@ class Data:
 
 @client.event
 async def on_ready():
+    await client.user.edit(avatar=pfp)
     channel = client.get_channel(int(channel_token))
     greetings = ["Hi, there!", "Howdy!", "Hello!", "Hey, there!"]
     await channel.send(f"{random.choice(greetings)} Five-Number Summary Bot is now online.")
