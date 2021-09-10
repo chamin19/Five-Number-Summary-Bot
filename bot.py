@@ -6,10 +6,6 @@ from os import getenv
 import bot_functions
 import random
 
-pfp_path = "pfp.jpg"
-fp = open(pfp_path, 'rb')
-pfp = fp.read()
-
 load_dotenv(".env")
 
 client = commands.Bot(command_prefix = "!")
@@ -33,7 +29,6 @@ class Data:
 
 @client.event
 async def on_ready():
-    await client.user.edit(avatar=pfp)
     channel = client.get_channel(int(channel_token))
     greetings = ["Hi, there!", "Howdy!", "Hello!", "Hey, there!"]
     await channel.send(f"{random.choice(greetings)} Five-Number Summary Bot is now online.")
